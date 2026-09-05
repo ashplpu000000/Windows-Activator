@@ -1,0 +1,270 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+    Version: 2.6.0.0
+    -->
+
+    <!--String Dictionary-->
+    
+    <sys:String x:Key="OK">
+        Ok
+    </sys:String>
+    <sys:String x:Key="Cancel">
+        Annuler
+    </sys:String>
+    <sys:String x:Key="Refuse">
+        Refuser
+    </sys:String>
+    <sys:String x:Key="DonateBtn">
+        Faire un don
+    </sys:String>
+    <sys:String x:Key="Exit">
+        Sortir
+    </sys:String>
+    <sys:String x:Key="UpdateNow">
+        Mettre à jour maintenant
+    </sys:String>
+    <sys:String x:Key="Ignore">
+        Ignorer
+    </sys:String>
+    <sys:String x:Key="TitleName">
+        CMWTAT Edition numérique
+    </sys:String>
+    <sys:String x:Key="UpdateTitle">
+        Une nouvelle version disponible !
+    </sys:String>
+    <sys:String x:Key="UpgradeFullVersionWindowsTitle">
+        Passer à la version complète de Windows
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateTitle">
+        Gérer les droits de correctifs à chaud
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateEnableBtn">
+        Activer les droits
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateRestoreBtn">
+        Restaurer par défaut
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateStatus">
+        État actuel : {0}
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateStatusEnabled">
+        Droits activés
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateStatusDefault">
+        Déterminé par l'abonnement (par défaut)
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateFailed">
+        Échec de l'opération. Veuillez vérifier que l'application est exécutée en tant qu'administrateur.
+    </sys:String>
+    <sys:String x:Key="CurrentVersion">
+        Version actuelle
+    </sys:String>
+    <sys:String x:Key="LatestVersion">
+        Dernière version
+    </sys:String>
+    <sys:String x:Key="Select_target_SKU">
+        Choisir le SKU cible (SKU actuel par défaut)
+    </sys:String>
+    <sys:String x:Key="Input_target_SKU">
+        Saisir la clé de produit du SKU cible
+    </sys:String>
+    <sys:String x:Key="Auto_Mode">
+        Mode automatique
+    </sys:String>
+    <sys:String x:Key="Manual_Mode">
+        Mode manuel
+    </sys:String>
+    <sys:String x:Key="Activate_Button">
+        Activer
+    </sys:String>
+    <sys:String x:Key="Convert_versions">
+        Convertir la versions (Installer la clé sans l'activer)
+    </sys:String>
+    <sys:String x:Key="Upgrade_full_version">
+        Passer à la version complète de Windows
+    </sys:String>
+    <sys:String x:Key="Rebootless_update_management">
+        Gérer les droits de correctifs à chaud
+    </sys:String>
+    <sys:String x:Key="test">
+        Texte de test
+    </sys:String>
+    <sys:String x:Key="Loading">
+        Chargement
+    </sys:String>
+    <sys:String x:Key="Activating">
+        Activation
+    </sys:String>
+    <sys:String x:Key="Complete">
+        Terminé
+    </sys:String>
+    <sys:String x:Key="notifyIconTitle">
+        CloudMoe Windows 10+ Activation Toolkit V2
+    </sys:String>
+    <sys:String x:Key="Running">
+        En cours d'exécution.
+    </sys:String>
+    <sys:String x:Key="Experimental">
+        Expérimental
+    </sys:String>
+    <sys:String x:Key="Attention">
+        Attention
+    </sys:String>
+    <sys:String x:Key="System_Edition">
+        Version du système
+    </sys:String>
+    <sys:String x:Key="May_be_not_be_supported">
+        La version de votre système d'exploitation n'est pas identifiable, il se peut qu'il ne soit pas supporté.
+    </sys:String>
+    <sys:String x:Key="Only_find_experimental">
+        Seules des options expérimentales peuvent être utilisées avec cette édition du système d'exploitation. Il y a peu d'espoir de succès d'activation.
+    </sys:String>
+    <sys:String x:Key="notify_May_be_not_be_supported_try">
+        La version de votre système peut ne pas être supportée, le programme se terminera automatiquement. Vous pouvez essayer d'ajouter --expact ou -e au démarrage.
+    </sys:String>
+    <sys:String x:Key="notify_May_be_not_be_supported_exit">
+        La version de votre système peut ne pas être prise en charge, le programme va se fermer.
+    </sys:String>
+    <sys:String x:Key="notify_Disconnect_to_server_exit">
+        Impossible de se connecter au serveur, Veuillez vérifier le réseau et réessayer plus tard, le programme va se fermer.
+    </sys:String>
+    <sys:String x:Key="Disconnect_to_server_exit">
+        Impossible de se connecter au serveur, Veuillez vérifier le réseau et réessayer plus tard, le programme va se fermer.
+    </sys:String>
+    <sys:String x:Key="RunInstall_Converting">
+        Conversion
+    </sys:String>
+    <sys:String x:Key="RunAct_Activating">
+        Activation
+    </sys:String>
+    <sys:String x:Key="RunInstall_Getting_Key">
+        Obtention de la clé par Internet
+    </sys:String>
+    <sys:String x:Key="RunAct_Getting_Key">
+        Obtention de la clé par Internet
+    </sys:String>
+    <sys:String x:Key="RunInstall_Uninstalling_old_Key">
+        Suppression de l'ancienne clé
+    </sys:String>
+    <sys:String x:Key="RunAct_Uninstalling_old_Key">
+        Suppression de l'ancienne clé
+    </sys:String>
+    <sys:String x:Key="RunAct_Uninstalling_old_Key_Exp">
+        Suppression de l'ancienne clé (Experimental)
+    </sys:String>
+    <sys:String x:Key="RunInstall_Installing_Key">
+       Installation de la clé
+    </sys:String>
+    <sys:String x:Key="RunAct_Installing_Key">
+        Installation de la clé
+    </sys:String>
+    <sys:String x:Key="RunAct_Getting_edition_code_Exp">
+        Obtenir le code version (Experimental)
+    </sys:String>
+    <sys:String x:Key="RunAct_Prepare_for_the_next_step_Exp">
+        Préparation à l'étape suivante (Experimental)
+    </sys:String>
+    <sys:String x:Key="RunAct_Writing_old_OS">
+        Écriture d'une ancienne version de Windows
+    </sys:String>
+    <sys:String x:Key="RunAct_Getting_free_upgrade_permissions">
+        Obtention des autorisations gratuite de mise à niveau
+    </sys:String>
+    <sys:String x:Key="RunAct_Cleaning_changes">
+        Nettoyage des changements
+    </sys:String>
+    <sys:String x:Key="RunAct_Getting_digital_license">
+        Obtention d'une licence numérique
+    </sys:String>
+    <sys:String x:Key="RunUpgradeFullVersion_Upgrading">
+        Mise à niveau
+    </sys:String>
+    <sys:String x:Key="CompleteTitle">
+        Terminé
+    </sys:String>
+    <sys:String x:Key="ErrorTitle">
+        Erreur
+    </sys:String>
+    <sys:String x:Key="ErrorCode">
+        Code:
+    </sys:String>
+    <sys:String x:Key="SysMsg">
+        Le système à retourné:
+    </sys:String>
+    <sys:String x:Key="ThemeSwitchToolTip">
+        Changer de thème (Actuel : {0})
+    </sys:String>
+    <sys:String x:Key="ThemeMode_System">
+        Suivre le système
+    </sys:String>
+    <sys:String x:Key="ThemeMode_Dark">
+        Sombre
+    </sys:String>
+    <sys:String x:Key="ThemeMode_Light">
+        Clair
+    </sys:String>
+    <sys:String x:Key="LanguageName">
+        Français
+    </sys:String>
+    <sys:String x:Key="LangSwitchToolTip">
+        Langue
+    </sys:String>
+    <sys:String x:Key="DonateToolTip">
+        Faire un don
+    </sys:String>
+
+    <!--
+        Attention:
+        DO NOT USE ANY Indentation in Preserve Mode, Please!
+    -->
+
+    <sys:String x:Key="UpgradeFullVersionWindowsText" xml:space="preserve">
+Vous utilisez actuellement la version Core de Windows, vous pouvez utiliser cette fonctionnalité pour passer à la version complète de Windows.&#10;(Si l'opération ne répond pas, il se peut que la version actuelle ne prenne pas en charge la mise à niveau ou qu'une mise à niveau soit déjà en cours) &#10;&#10;Remarque :&#10;Cette opération est irréversible, une fois la mise à niveau terminée vous ne pourrez plus revenir à la version Core de Windows !&#10;&#10;Voulez-vous vraiment effectuer la mise à niveau ?
+    </sys:String>
+    <sys:String x:Key="RebootlessUpdateText" xml:space="preserve">
+La mise à jour par correctif à chaud (hotpatch) de Windows est un droit spécial réservé aux utilisateurs disposant d'une licence d'abonnement Windows.&#10;&#10;Normalement, les mises à jour mensuelles de Windows nécessitent un redémarrage du système d'exploitation pour être terminées.&#10;Une fois les correctifs à chaud activés, Windows peut installer les mises à jour sans redémarrer le système.&#10;&#10;Les cas suivants font exception :&#10;Les mises à jour de référence (une mise à jour de référence trimestrielle est généralement publiée tous les 3 mois)&#10;Windows n'est pas sur la dernière version de référence&#10;La sécurité basée sur la virtualisation (VBS) est désactivée&#10;Utilisation d'une version préliminaire Windows Insider&#10;Les appareils ARM64 utilisant CHPE sans l'avoir désactivé
+    </sys:String>
+    <sys:String x:Key="HelpText" xml:space="preserve">
+Cette application prend désormais en charge les arguments de ligne de commande au démarrage !&#10;&#10;-a&#9;--auto&#9;&#9;Activation automatique.&#10;-h&#9;--hide&#9;&#9;Exécuter en mode masqué (fonctionne uniquement avec -auto).&#10;-e&#9;--expact&#9;&#9;Activation expérimentale.&#10;-l&#9;--log&#9;&#9;Écrire le journal dans un fichier.&#10;-?&#9;--help&#9;&#9;Afficher cette boîte de dialogue d'aide.
+    </sys:String>
+    <sys:String x:Key="DonateTextConverted" xml:space="preserve">
+Félicitations ! &#10;&#10;Windows a été converti avec succès.
+    </sys:String>
+    <sys:String x:Key="DonateTextActivated" xml:space="preserve">
+Félicitations ! &#10;&#10;Windows a été activé avec succès.
+    </sys:String>
+    <sys:String x:Key="UpdateText" xml:space="preserve">
+Une nouvelle version de CloudMoe Windows 10+ Activation Toolkit Digital Edition est disponible.&#10;Veuillez mettre à jour vers la dernière version pour garantir son bon fonctionnement.
+    </sys:String>
+    <sys:String x:Key="UpdateMustText" xml:space="preserve">
+Une nouvelle version de CloudMoe Windows 10+ Activation Toolkit Digital Edition est disponible.&#10;Votre version étant trop ancienne, vous DEVEZ mettre à jour vers la dernière version pour garantir son bon fonctionnement.
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-0" xml:space="preserve">
+L'activation de Windows nécessite une connexion réseau pour obtenir la clé de produit :)
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-1" xml:space="preserve">
+Impossible de désinstaller l'ancienne clé. :(
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-1.1" xml:space="preserve">
+Impossible d'installer la clé, vous avez peut-être choisi ou saisi une version incorrecte. :(
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-1.2" xml:space="preserve">
+Impossible d'obtenir le code de version. :(
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-2" xml:space="preserve">
+Impossible d'installer la clé, vous avez peut-être choisi ou saisi une version incorrecte. :(
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-3" xml:space="preserve">
+Délai dépassé, vous avez peut-être choisi ou saisi une version incorrecte. :(
+    </sys:String>
+    <sys:String x:Key="ErrorMsg-4" xml:space="preserve">
+Échec de l'activation. :( &#10;Peut-être : &#10;1. Cette édition/version de Windows ne prend pas en charge l'activation par licence numérique. &#10;2. Impossible de se connecter au serveur d'activation Microsoft Windows. &#10;3. Autres problèmes inattendus. &#10;&#10;Vous pouvez patienter un instant ou réessayer plus tard. &#10;
+    </sys:String>
+    <sys:String x:Key="Only_find_ltok" xml:space="preserve">
+Seules des options Long-Term Offline KMS (LTOK) peuvent être utilisées avec cette édition du système d'exploitation. &#10;Cela signifie que le système ne sera pas activé automatiquement après une réinstallation. &#10;Mais ne vous inquiétez pas, cette méthode diffère de l'activation KMS classique (qui ne reste active que 180 jours hors ligne). &#10;LTOK (le préfixe est Offline-KMS) peut rester activé jusqu'en 2038, même sans connexion réseau !
+    </sys:String>
+    <sys:String x:Key="DonateTextWillActivated" xml:space="preserve">
+Félicitations ! &#10;&#10;Windows est prêt à être activé. &#10;Cependant, il semble que Windows ne parvienne pas à joindre le serveur d'activation Microsoft.&#10;Votre système sera activé automatiquement lors de la prochaine connexion au serveur.
+    </sys:String>
+</ResourceDictionary>
