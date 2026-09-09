@@ -1,6 +1,6 @@
 {
-  "name": "Windows Activator Digital Edition",
-  "description": "CloudMoe Windows Activation Toolkit with full support for Windows 11 down to Windows 7, Windows Server (2005-2025), Windows IoT & Embedded, and LTSC/LTSB editions",
+  "name": "Windows Activator",
+  "description": "Windows Activator toolkit with support for Windows 11 down to Windows XP, Windows Server (2003-2025), Windows IoT & Embedded, and LTSC/LTSB editions",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

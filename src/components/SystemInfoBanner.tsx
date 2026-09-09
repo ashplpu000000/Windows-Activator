@@ -1,12 +1,16 @@
 import React from 'react';
-import { Laptop, CheckCircle2, ShieldAlert, Terminal } from 'lucide-react';
-import { SystemEditionItem } from '../types';
+import { Laptop, CheckCircle2, ShieldAlert, Terminal, Sparkles } from 'lucide-react';
+import { SystemEditionItem, LanguageCode } from '../types';
+import { translations } from '../translations';
 
 interface SystemInfoBannerProps {
-  currentEdition: SystemEditionItem;
+  currentEdition: SystemEditionItem | null;
   isActivated: boolean;
   hotpatchEnabled: boolean;
   onOpenStatus?: () => void;
+  onAutoDetect?: () => void;
+  detectedOS?: string;
+  language?: LanguageCode;
 }
 
 export const SystemInfoBanner: React.FC<SystemInfoBannerProps> = ({
@@ -14,7 +18,11 @@ export const SystemInfoBanner: React.FC<SystemInfoBannerProps> = ({
   isActivated,
   hotpatchEnabled,
   onOpenStatus,
+  onAutoDetect,
+  detectedOS,
+  language = 'en',
 }) => {
+  const t = translations[language] || translations.en;
   // Compute realistic build strings based on edition family & year
   const getBuildString = (item: SystemEditionItem) => {
     if (item.buildNumber) return `Build ${item.buildNumber}`;
@@ -35,73 +43,71 @@ export const SystemInfoBanner: React.FC<SystemInfoBannerProps> = ({
     return 'Build 26100.1742 (Windows 11 24H2)';
   };
 
-  const getActivationLabel = (item: SystemEditionItem) => {
-    switch (item.method) {
-      case 'hwid':
-        return 'Activated (HWID Digital)';
-      case 'kms38':
-        return 'Activated (KMS38 Exp: 2038)';
-      case 'kms':
-        return 'Activated (KMS 180-day)';
-      case 'oem_slic':
-        return 'Activated (OEM SLIC 2.1)';
-      case 'legacy_vl':
-        return 'Activated (Volume PID)';
-      case 'avma':
-        return 'Activated (Hyper-V AVMA)';
-      default:
-        return 'Activated';
-    }
-  };
+  const hostName = detectedOS || 'Windows Host PC';
 
   return (
-    <div className="w-full max-w-[540px] mx-auto mt-3 px-3 py-2 bg-neutral-100/70 dark:bg-neutral-800/40 rounded-lg border border-neutral-200/60 dark:border-neutral-700/60 flex items-center justify-between text-[11px] text-neutral-600 dark:text-neutral-400">
-      <div className="flex items-center space-x-2 truncate">
-        <Laptop className="w-3.5 h-3.5 text-neutral-500 shrink-0" />
-        <span
-          title={getBuildString(currentEdition)}
-          className="font-medium text-neutral-800 dark:text-neutral-200 truncate max-w-[190px] sm:max-w-[270px]"
-        >
-          {currentEdition.displayOS} ({getBuildString(currentEdition)})
+    <div className="w-full mt-1 sm:mt-1.5 px-3.5 sm:px-4 py-2 bg-neutral-100/90 dark:bg-[#202024]/90 rounded-xl border border-neutral-200/80 dark:border-neutral-800/80 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-xs text-neutral-600 dark:text-neutral-400 shadow-2xs">
+      {/* Left side: Host System and Target SKU info */}
+      <div className="flex items-center space-x-2 truncate min-w-0">
+        <Laptop className="w-4 h-4 text-blue-500 shrink-0" />
+        <span className="font-semibold text-neutral-800 dark:text-neutral-200 truncate">
+          Host: {hostName}
         </span>
-        {currentEdition.ntKernel && (
-          <span className="hidden md:inline-block px-1.5 py-0.2 bg-neutral-200/70 dark:bg-neutral-700/70 rounded text-[9.5px] font-mono font-medium text-neutral-700 dark:text-neutral-300">
-            {currentEdition.ntKernel}
-          </span>
-        )}
-        {currentEdition.arch && (
-          <span className="inline-block px-1.5 py-0.2 bg-neutral-200/70 dark:bg-neutral-700/70 rounded text-[9.5px] font-mono font-medium text-neutral-700 dark:text-neutral-300">
-            {currentEdition.arch}
-          </span>
+        {currentEdition && (
+          <>
+            <span className="text-neutral-300 dark:text-neutral-700">|</span>
+            <span
+              title={`Target Activation SKU: ${currentEdition.displayOS} (${getBuildString(currentEdition)})`}
+              className="text-neutral-600 dark:text-neutral-300 truncate font-medium"
+            >
+              Target: <span className="font-semibold text-neutral-900 dark:text-neutral-100">{currentEdition.displayOS}</span>
+            </span>
+          </>
         )}
       </div>
-      <div className="flex items-center space-x-2 shrink-0">
-        <div className="flex items-center space-x-1">
+
+      {/* Right side: Host Activation Status & Tools */}
+      <div className="flex items-center space-x-2.5 shrink-0">
+        <div className="flex items-center space-x-1.5">
           {isActivated ? (
-            <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 font-medium text-[10.5px]">
-              <CheckCircle2 className="w-3 h-3 mr-1 shrink-0" />
-              {getActivationLabel(currentEdition)}
+            <span className="inline-flex items-center text-emerald-600 dark:text-emerald-400 font-semibold text-xs">
+              <CheckCircle2 className="w-3.5 h-3.5 mr-1 shrink-0" />
+              <span>Host Activated</span>
             </span>
           ) : (
-            <span className="inline-flex items-center text-amber-600 dark:text-amber-400 font-medium text-[10.5px]">
-              <ShieldAlert className="w-3 h-3 mr-1 shrink-0" />
-              Notification State
+            <span className="inline-flex items-center text-amber-600 dark:text-amber-400 font-semibold text-xs">
+              <ShieldAlert className="w-3.5 h-3.5 mr-1 shrink-0" />
+              <span>Host Not Activated</span>
             </span>
           )}
         </div>
+
         {hotpatchEnabled && (
-          <span className="hidden sm:inline-block px-1.5 py-0.2 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded text-[10px] font-semibold">
+          <span className="hidden sm:inline-block px-2 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-md text-[11px] font-semibold">
             Hotpatch
           </span>
         )}
+
+        {onAutoDetect && (
+          <button
+            type="button"
+            onClick={onAutoDetect}
+            title="Scan host machine OS"
+            className="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-[11px] font-semibold flex items-center gap-1 cursor-pointer transition-colors shadow-2xs"
+          >
+            <Sparkles className="w-3 h-3" />
+            <span className="hidden sm:inline">{t.Auto_Mode}</span>
+          </button>
+        )}
+
         {onOpenStatus && (
           <button
             type="button"
             onClick={onOpenStatus}
             title="slmgr.vbs /dli"
-            className="p-1 rounded hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            className="p-1 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-700 text-neutral-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
           >
-            <Terminal className="w-3.5 h-3.5" />
+            <Terminal className="w-4 h-4" />
           </button>
         )}
       </div>

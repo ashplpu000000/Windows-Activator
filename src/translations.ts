@@ -97,7 +97,7 @@ export interface Translations {
   Errors: Record<string, string>;
 }
 
-export const translations: Record<LanguageCode, Translations> = {
+const baseTranslations: Record<'en' | 'zh' | 'fr' | 'ja' | 'ru', Translations> = {
   en: {
     OK: 'OK',
     Cancel: 'Cancel',
@@ -106,7 +106,7 @@ export const translations: Record<LanguageCode, Translations> = {
     Exit: 'Exit',
     UpdateNow: 'Update Now',
     Ignore: 'Ignore',
-    TitleName: 'CMWTAT Digital Edition',
+    TitleName: 'Windows Activator',
     UpdateTitle: 'A new version available!',
     UpgradeFullVersionWindowsTitle: 'Upgrade to full version of Windows',
     RebootlessUpdateTitle: 'Manage hotpatch entitlement',
@@ -162,7 +162,7 @@ export const translations: Record<LanguageCode, Translations> = {
     DonateTextWillActivated:
       'Congratulation!\n\nWindows is ready to activate.\nHowever, it seems that Windows cannot connect to the Microsoft Activation Server.\nYour system will be activated automatically the next time the server is connected.',
     UpdateText:
-      'We found a new version for CloudMoe Windows 10+ Activation Toolkit Digital Edition.\nPlease update to the latest version to make sure it works.',
+      'We found a new version for Windows Activator.\nPlease update to the latest version to make sure it works.',
     ThemeSwitchToolTip: 'Switch theme (Current: {0})',
     ThemeMode_System: 'System default',
     ThemeMode_Dark: 'Dark',
@@ -215,7 +215,7 @@ export const translations: Record<LanguageCode, Translations> = {
     Exit: '退出',
     UpdateNow: '立即更新',
     Ignore: '忽略',
-    TitleName: '云萌 Windows 10+ 数字权利激活工具',
+    TitleName: 'Windows 激活工具',
     UpdateTitle: '新版本可用！',
     UpgradeFullVersionWindowsTitle: '升级到完整版 Windows',
     RebootlessUpdateTitle: '热补丁权益管理',
@@ -270,7 +270,7 @@ export const translations: Record<LanguageCode, Translations> = {
     DonateTextActivated: '恭喜！\n\nWindows 已成功激活并获取数字权利。',
     DonateTextWillActivated:
       '恭喜！\n\nWindows 已做好激活准备。\n但是当前似乎无法连接到微软激活服务器，下次联网时系统将自动激活。',
-    UpdateText: '检测到云萌 Windows 10+ 数字权利激活工具新版本。\n请更新到最新版本以确保正常工作。',
+    UpdateText: '检测到 Windows 激活工具新版本。\n请更新到最新版本以确保正常工作。',
     ThemeSwitchToolTip: '切换主题（当前：{0}）',
     ThemeMode_System: '跟随系统',
     ThemeMode_Dark: '深色',
@@ -323,7 +323,7 @@ export const translations: Record<LanguageCode, Translations> = {
     Exit: 'Sortir',
     UpdateNow: 'Mettre à jour maintenant',
     Ignore: 'Ignorer',
-    TitleName: 'CMWTAT Edition numérique',
+    TitleName: 'Windows Activator',
     UpdateTitle: 'Une nouvelle version disponible !',
     UpgradeFullVersionWindowsTitle: 'Passer à la version complète de Windows',
     RebootlessUpdateTitle: 'Gérer les droits de correctifs à chaud',
@@ -377,7 +377,7 @@ export const translations: Record<LanguageCode, Translations> = {
     DonateTextConverted: 'Félicitations !\n\nWindows a été converti avec succès.',
     DonateTextActivated: 'Félicitations !\n\nWindows a été activé avec succès.',
     DonateTextWillActivated: 'Félicitations !\n\nWindows est prêt à être activé lors de la prochaine connexion aux serveurs Microsoft.',
-    UpdateText: 'Une nouvelle version de CloudMoe Windows Toolkit est disponible.',
+    UpdateText: 'Une nouvelle version de Windows Activator est disponible.',
     ThemeSwitchToolTip: 'Changer de thème (Actuel : {0})',
     ThemeMode_System: 'Système par défaut',
     ThemeMode_Dark: 'Sombre',
@@ -430,7 +430,7 @@ export const translations: Record<LanguageCode, Translations> = {
     Exit: '終了',
     UpdateNow: '今すぐアップデート',
     Ignore: '無視する',
-    TitleName: '雲萌 10+ デジタルライセンス認証アプリ',
+    TitleName: 'Windows 認証ツール',
     UpdateTitle: '新しいバージョンがあります！',
     UpgradeFullVersionWindowsTitle: '完全版 Windows へアップグレード',
     RebootlessUpdateTitle: 'ホットパッチ特典の管理',
@@ -537,7 +537,7 @@ export const translations: Record<LanguageCode, Translations> = {
     Exit: 'Выйти',
     UpdateNow: 'Обновить сейчас',
     Ignore: 'Игнорировать',
-    TitleName: 'CMWTAT Digital Edition',
+    TitleName: 'Windows Activator',
     UpdateTitle: 'Доступна новая версия!',
     UpgradeFullVersionWindowsTitle: 'Перейти на полную версию Windows',
     RebootlessUpdateTitle: 'Управление правами на горячие исправления',
@@ -591,7 +591,7 @@ export const translations: Record<LanguageCode, Translations> = {
     DonateTextConverted: 'Поздравляем!\n\nРедакция Windows успешно изменена.',
     DonateTextActivated: 'Поздравляем!\n\nWindows успешно активирована цифровой лицензией.',
     DonateTextWillActivated: 'Поздравляем!\n\nWindows готова к активации. Активация произойдет при следующем подключении к серверам Microsoft.',
-    UpdateText: 'Найдена новая версия CloudMoe Windows Toolkit.',
+    UpdateText: 'Найдена новая версия Windows Activator.',
     ThemeSwitchToolTip: 'Сменить тему (Текущая: {0})',
     ThemeMode_System: 'По умолчанию',
     ThemeMode_Dark: 'Темная',
@@ -637,3 +637,108 @@ export const translations: Record<LanguageCode, Translations> = {
     },
   },
 };
+
+import { worldOverrides } from './data/worldTranslations';
+
+const fullTranslations: Record<string, Translations> = {
+  ...baseTranslations,
+};
+
+(Object.keys(worldOverrides) as (keyof typeof worldOverrides)[]).forEach((code) => {
+  const override = worldOverrides[code] || {};
+  fullTranslations[code] = {
+    ...baseTranslations.en,
+    ...override,
+    Errors: {
+      ...baseTranslations.en.Errors,
+      ...(override.Errors || {}),
+    },
+  };
+});
+
+// Common ISO 639-3 aliases to canonical supported keys
+const codeAliases: Record<string, string> = {
+  ben: 'bn',
+  hin: 'hi',
+  spa: 'es',
+  osp: 'es',
+  spq: 'es',
+  fra: 'fr',
+  fre: 'fr',
+  frc: 'fr',
+  deu: 'de',
+  ger: 'de',
+  gsw: 'de',
+  nds: 'de',
+  por: 'pt',
+  rus: 'ru',
+  zho: 'zh',
+  cmn: 'zh',
+  yue: 'zh-TW',
+  jpn: 'ja',
+  kor: 'ko',
+  ara: 'ar',
+  tur: 'tr',
+  vie: 'vi',
+  ita: 'it',
+  pol: 'pl',
+  ukr: 'uk',
+  nld: 'nl',
+  dut: 'nl',
+  ind: 'id',
+  msa: 'ms',
+  tha: 'th',
+  tgl: 'tl',
+  fil: 'tl',
+  urd: 'ur',
+  fas: 'fa',
+  heb: 'he',
+  swe: 'sv',
+  ell: 'el',
+  ces: 'cs',
+  slk: 'sk',
+  ron: 'ro',
+  hun: 'hu',
+  dan: 'da',
+  fin: 'fi',
+  nor: 'no',
+  swa: 'sw',
+  tam: 'ta',
+  tel: 'te',
+  mar: 'mr',
+  bul: 'bg',
+  cat: 'ca',
+  lit: 'lt',
+  slv: 'sl',
+  lav: 'lv',
+  est: 'et',
+  afr: 'af',
+  eus: 'eu',
+  glg: 'gl',
+  srp: 'sr',
+  hrv: 'hr',
+};
+
+const translationProxy = new Proxy(fullTranslations, {
+  get(target, prop: string) {
+    if (typeof prop === 'string') {
+      if (prop in target) {
+        return target[prop];
+      }
+      const lower = prop.toLowerCase();
+      if (lower in target) {
+        return target[lower];
+      }
+      const alias = codeAliases[lower];
+      if (alias && alias in target) {
+        return target[alias];
+      }
+    }
+    return target.en || baseTranslations.en;
+  },
+});
+
+export const translations: Record<LanguageCode, Translations> = translationProxy as Record<
+  LanguageCode,
+  Translations
+>;

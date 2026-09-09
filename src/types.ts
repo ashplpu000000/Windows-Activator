@@ -1,6 +1,74 @@
-export type LanguageCode = 'en' | 'zh' | 'fr' | 'ja' | 'ru';
+export type LanguageCode =
+  | 'en'
+  | 'zh'
+  | 'zh-TW'
+  | 'es'
+  | 'fr'
+  | 'de'
+  | 'ru'
+  | 'ja'
+  | 'pt'
+  | 'it'
+  | 'ko'
+  | 'hi'
+  | 'bn'
+  | 'ar'
+  | 'tr'
+  | 'vi'
+  | 'pl'
+  | 'uk'
+  | 'nl'
+  | 'id'
+  | 'th'
+  | 'el'
+  | 'cs'
+  | 'sv'
+  | 'ro'
+  | 'hu'
+  | 'da'
+  | 'fi'
+  | 'no'
+  | 'he'
+  | 'fa'
+  | 'ur'
+  | 'ms'
+  | 'tl'
+  | 'sw'
+  | 'ta'
+  | 'te'
+  | 'mr'
+  | 'sr'
+  | 'hr'
+  | 'sk'
+  | 'bg'
+  | 'ca'
+  | 'lt'
+  | 'sl'
+  | 'lv'
+  | 'et'
+  | 'af'
+  | 'eu'
+  | 'gl'
+  | (string & {});
 
 export type ThemeMode = 'system' | 'dark' | 'light';
+
+export interface ThemePreset {
+  id: string;
+  name: string;
+  category: string;
+  mode: 'light' | 'dark';
+  bgGradient: string;
+  windowBg: string;
+  headerBg: string;
+  accentColor: string;
+  accentHover: string;
+  textColor: string;
+  secondaryText: string;
+  borderCol: string;
+  cardBg: string;
+  previewColor: string;
+}
 
 export interface LicenseTaskOptions {
   isAuto: boolean;
@@ -15,7 +83,7 @@ export interface LicenseTaskResult {
   succeeded: boolean;
 }
 
-export type Architecture = 'x64' | 'x86' | 'x64 / x86' | 'arm64';
+export type Architecture = 'x64' | 'x86' | 'x64 / x86' | 'arm64' | 'x64 / arm64' | 'x64 / x86 / arm64' | 'ia64';
 
 export type OSFamily =
   | 'all'
@@ -28,6 +96,8 @@ export type OSFamily =
   | 'server'
   | 'win8'
   | 'win7'
+  | 'vista'
+  | 'winxp'
   | 'preview';
 
 export type ActivationMethod =
@@ -36,7 +106,9 @@ export type ActivationMethod =
   | 'kms'
   | 'oem_slic'
   | 'legacy_vl'
-  | 'avma';
+  | 'avma'
+  | 'wpa_offline'
+  | 'phone_cid';
 
 export interface SystemEditionItem {
   id: number;
@@ -63,7 +135,32 @@ export type ActiveDialog =
   | 'rebootless_update'
   | 'help'
   | 'update'
-  | 'slmgr_status';
+  | 'slmgr_status'
+  | 'theme_picker'
+  | 'key_checker'
+  | 'iso_downloader'
+  | 'xp_activation_tool';
+
+export interface WindowsIsoItem {
+  id: string;
+  versionName: string;
+  edition: string;
+  family: OSFamily | 'legacy';
+  releaseYear: string;
+  build: string;
+  architecture: Architecture;
+  fileSize: string;
+  sha256?: string;
+  languages: string[];
+  directDownloadUrl: string;
+  officialMirrorUrl?: string;
+  torrentMagnet?: string;
+  category: 'consumer' | 'enterprise' | 'ltsc' | 'server' | 'legacy';
+  description: string;
+  ntKernel: string;
+  migrationNotes: string;
+  canInPlaceUpgradeFrom?: string[]; // e.g. ["win10", "win8"]
+}
 
 export interface LogEntry {
   id: string;

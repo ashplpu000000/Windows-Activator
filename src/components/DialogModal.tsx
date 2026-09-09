@@ -2,6 +2,7 @@ import React from 'react';
 import { Loader2, Terminal, CheckCircle2 } from 'lucide-react';
 import { ActiveDialog, LanguageCode, SystemEditionItem } from '../types';
 import { translations } from '../translations';
+import appLogo from '../assets/images/app-logo.png';
 
 interface DialogModalProps {
   activeDialog: ActiveDialog;
@@ -54,10 +55,17 @@ export const DialogModal: React.FC<DialogModalProps> = ({
         {(activeDialog === 'complete_donate' || activeDialog === 'complete') && (
           <div className="flex flex-col">
             <div className="px-6 pt-5 pb-3 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-              <h3 className="text-base font-semibold text-neutral-900 dark:text-white flex items-center space-x-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
-                <span>{t.CompleteTitle}</span>
-              </h3>
+              <div className="flex items-center space-x-2.5">
+                <img
+                  src={appLogo}
+                  alt="App Logo"
+                  className="h-7 w-auto object-contain rounded drop-shadow-[0_0_6px_rgba(250,204,21,0.4)]"
+                />
+                <h3 className="text-base font-semibold text-neutral-900 dark:text-white flex items-center space-x-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  <span>{t.CompleteTitle}</span>
+                </h3>
+              </div>
             </div>
             <div className="px-6 py-4 overflow-y-auto text-sm text-neutral-700 dark:text-neutral-300 whitespace-pre-line space-y-3">
               <p className="text-sm font-medium text-neutral-800 dark:text-neutral-100">{t.DonateTextActivated}</p>
@@ -178,10 +186,13 @@ export const DialogModal: React.FC<DialogModalProps> = ({
         {activeDialog === 'help' && (
           <div className="flex flex-col">
             <div className="px-6 pt-5 pb-3 border-b border-neutral-100 dark:border-neutral-800 flex items-center justify-between">
-              <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
-                {t.HelpToolTip}
-              </h3>
-              <span className="text-[11px] text-neutral-400">CMWTAT CLI v3.0.1</span>
+              <div className="flex items-center space-x-2.5">
+                <WindowsOrbitLogo className="h-7 w-auto rounded drop-shadow-[0_0_6px_rgba(250,204,21,0.5)]" />
+                <h3 className="text-base font-semibold text-neutral-900 dark:text-white">
+                  {t.HelpToolTip}
+                </h3>
+              </div>
+              <span className="text-[11px] text-neutral-400">Windows Activator v1.0</span>
             </div>
             <div className="px-6 py-4 overflow-y-auto text-xs text-neutral-700 dark:text-neutral-300 space-y-3 font-mono">
               <pre className="p-3 bg-neutral-100 dark:bg-neutral-900 rounded-lg overflow-x-auto whitespace-pre leading-relaxed">
@@ -189,7 +200,7 @@ export const DialogModal: React.FC<DialogModalProps> = ({
               </pre>
               <div className="text-neutral-500 dark:text-neutral-400 font-sans space-y-1">
                 <p className="font-semibold text-neutral-700 dark:text-neutral-200">
-                  CloudMoe Digital License Engine:
+                  Windows Activator Engine:
                 </p>
                 <p>• Digital License (HWID) activation for Windows 10/11.</p>
                 <p>• Seamless version conversion without reinstallation.</p>
@@ -218,8 +229,8 @@ export const DialogModal: React.FC<DialogModalProps> = ({
             <div className="px-6 py-4 overflow-y-auto text-sm text-neutral-700 dark:text-neutral-300 space-y-3">
               <p className="whitespace-pre-line text-xs">{t.UpdateText}</p>
               <div className="p-2.5 bg-neutral-100 dark:bg-neutral-800 rounded font-mono text-xs space-y-1">
-                <div>{t.CurrentVersion}: 3.0.1.0</div>
-                <div>{t.LatestVersion}: 3.0.1.0 (Up to date)</div>
+                <div>{t.CurrentVersion}: 1.0.0.0 (Version 1)</div>
+                <div>{t.LatestVersion}: 1.0.0.0 (Up to date)</div>
               </div>
             </div>
             <div className="px-6 py-3 bg-neutral-50/80 dark:bg-neutral-800/40 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-end space-x-2">
@@ -269,7 +280,7 @@ SKU ID: ${currentEdition.sku}
 Release Era: ${currentEdition.releaseYear || 'All'}
 ${
   currentEdition.method === 'kms'
-    ? '\nVolume activation expiration: 259200 minute(s) (180 days)\nKMS Server: kms.cloudmoe.com:1688\nKMS PID: 06401-00206-271-000003-03-1033-9200.0000-2452024'
+    ? '\nVolume activation expiration: 259200 minute(s) (180 days)\nKMS Server: kms.windows.internal:1688\nKMS PID: 06401-00206-271-000003-03-1033-9200.0000-2452024'
     : currentEdition.method === 'kms38'
     ? '\nVolume activation expiration: 2038-01-19 03:14:07 UTC\nClipSVC Offline Ticket Hash: SHA256-VALIDATED'
     : currentEdition.method === 'hwid'

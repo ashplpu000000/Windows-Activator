@@ -47,12 +47,12 @@ export const ConsoleLogViewer: React.FC<ConsoleLogViewerProps> = ({
   };
 
   return (
-    <div className="w-full max-w-[540px] mx-auto mt-4 bg-[#181818] border border-neutral-800 rounded-xl overflow-hidden shadow-xl text-neutral-200 font-mono text-xs">
+    <div className="w-full bg-[#18181b] border border-neutral-200/80 dark:border-neutral-800 rounded-xl overflow-hidden shadow-xl text-neutral-200 font-mono text-xs">
       {/* Header */}
       <div className="px-3.5 py-2 bg-[#1f1f1f] border-b border-neutral-800 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Terminal className="w-3.5 h-3.5 text-blue-400" />
-          <span className="text-[11px] font-semibold text-neutral-300">CMWTAT Diagnostic Console</span>
+          <span className="text-[11px] font-semibold text-neutral-300">Windows Activator Diagnostic Console</span>
         </div>
         <div className="flex items-center space-x-1.5">
           <button
